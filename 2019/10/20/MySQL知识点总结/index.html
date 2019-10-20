@@ -130,7 +130,118 @@
         </header>
 
         <div class="post-content">
-            
+            <p>MySQL数据库增删改查SQL语句 </p>
+<p>查看数据库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure>
+
+<p>使用数据库 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 数据库名;</span><br></pre></td></tr></table></figure>
+
+<p>创建数据库 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE 数据库名;</span><br></pre></td></tr></table></figure>
+
+<p>删除数据库 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE 数据库名;</span><br></pre></td></tr></table></figure>
+
+<p>创建表 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(    列名1 类型(长度) [约束],    列名2 类型(长度) [约束],    ……);</span><br></pre></td></tr></table></figure>
+
+<p><strong>长度区别</strong> </p>
+<p>int类型带长度：不影响存取值，即使设定的值超出了长度的范畴，也能存，如果没有达到设定的长度， 则使用空格自动填充到设定的长度 char类型：不可变字符，设定的长度就是规定当前字段能存的数据的最大长度，若超出长度，则会报 错，若没有达到长度，使用空格填充到设定的长度 varchar：可变字符，设定的长度同样是规定当前字段能存的数据的最大长度，若超出长度，则会报 错，若没有达到长度，不会使用空格填充，实际多长就是多长</p>
+<p><strong>删除表</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE 表名;</span><br></pre></td></tr></table></figure>
+
+<p><strong>表约束</strong><br>1.非空约束    NOT NULL</p>
+<p> 2.默认值约束  DEFAULT ‘男’</p>
+<p>3.唯一约束    UNIQUE</p>
+<p>4.主键约束    PRIMARY KEY</p>
+<p><strong>修改表</strong> <strong>修改列名</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Alter table 表名  change  列名  新列名 类型;</span><br></pre></td></tr></table></figure>
+
+<p><strong>修改列类型</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Alter table 表名  change 列名  列名  新类型;</span><br></pre></td></tr></table></figure>
+
+<p><strong>修改列类型</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Alter table 表名  modify  列名  新类型;</span><br></pre></td></tr></table></figure>
+
+<p>​                   =====================<strong>数据查询-单表</strong>====================</p>
+<p><strong>查询表中全部信息</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from 表名;</span><br></pre></td></tr></table></figure>
+
+<p><strong>查询表中指定列的信息</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 列1,列2 from 表名;</span><br></pre></td></tr></table></figure>
+
+<p>语句的执行顺序：from—&gt;select</p>
+<p><strong>数据去重</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select distinct 列…. From 表名;</span><br></pre></td></tr></table></figure>
+
+<p><strong>拼接结果</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select concat(列1,列2) from 表名;</span><br></pre></td></tr></table></figure>
+
+<p><strong>运算符优先级</strong>：<br>1.乘法和除法的优先级高于加法和减法</p>
+<p> 2.同级运算的顺序是从左到右</p>
+<p>3.表达式中使用”括号”可强行改变优先级的运算顺序</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 列1[+-*/]列2 from 表名;</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置别名(注意：关键字as可以省略)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select 列 as 别名 from 表名; </span><br><span class="line">select 列 别名 from 表名;</span><br></pre></td></tr></table></figure>
+
+<p>语句的执行顺序：from—&gt;select</p>
+<p><strong>条件查询</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 列… from 表名 where 条件;</span><br></pre></td></tr></table></figure>
+
+<p><strong>条件中比较运算符：( 等于:= 大于:&gt; 大于等于:&gt;= 小于:&lt; 小于等于:&lt;= 不等于:!= 或 &lt;&gt; )</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where 列  比较运算符  值;</span><br></pre></td></tr></table></figure>
+
+<p>注意:字符串、日期需使用单引号括起来 </p>
+<p>语句的执行顺序：from—&gt;where—&gt;select</p>
+<p><strong>逻辑运算符( 并且:and 或 &amp;&amp; 或:or 非:not 或 ! )</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">where 条件1  逻辑运算符  条件2;  </span><br><span class="line">where not 条件;</span><br></pre></td></tr></table></figure>
+
+<p><strong>范围查询</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where 列 between 条件1  and 条件2;</span><br></pre></td></tr></table></figure>
+
+<p>//列在这个区间的值where 列 not between 条件1 and 条件2;   </p>
+<p> //不在这个区间where !( 列 between 条件1 and 条件2 ); </p>
+<p>//同样表示不在这个区间</p>
+<p><strong>集合查询( 判断列的值是否在指定的集合中 )</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where 列 in(值1,值2);</span><br></pre></td></tr></table></figure>
+
+<p>//列中的数据是in后的值里面的where 列 not in(值1,值2);   </p>
+<p>//不是in中指定值的数据</p>
+<p><strong>NULL值查询( 注意：列中值为null不能使用=去查询 )</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where 列 is null;</span><br></pre></td></tr></table></figure>
+
+<p>//查询列中值为null的数据</p>
+<p><strong>模糊查询</strong><br><strong>%：表示0到多个字符，示例:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where 列 like &apos;%0&apos;;</span><br></pre></td></tr></table></figure>
+
+<p> //表示以0结尾where 列 like  ‘0%’;   </p>
+<p>//表示以0开头where 列 like  ‘%0%’;  </p>
+<p> //表示数据中包含0</p>
+<p><strong>_：表示一个字符，可多次使用，示例：</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where 列 like &apos;%0_&apos;;</span><br></pre></td></tr></table></figure>
+
+<p>//数据结尾第二位是0</p>
+<p><strong>结果排序( 对查询出的结果按照一列或多列进行升序还是降序排列 升序:asc 降序:desc 注意：不能使用 中文的别名排序)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where 条件 order by 列 [asc/desc]</span><br></pre></td></tr></table></figure>
+
+<p>语句的执行顺序：from—&gt;where—&gt;select—&gt;order by</p>
+<p><strong>分页查询( beginIndex:表示从第多少条数据开始 pageSize:表示每页显示的数据条数 )</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">where [条件] limit beginIndex,pageSize;</span><br></pre></td></tr></table></figure>
+
+<p>ex：每页显示3条数据 </p>
+<p>第一页: SELECT * FROM 表名 LIMIT 0,3    –0,1,2 </p>
+<p>第二页: SELECT * FROM 表名 LIMIT 3,3    –3,4,5 </p>
+<p>第三页: SELECT * FROM 表名 LIMIT 6,3    –6,7,8 </p>
+<p>第四页: SELECT * FROM 表名 LIMIT 9,3    –9,10,11    </p>
+<p>…… </p>
+<p>第七页: SELECT * FROM 表名 LIMIT 18,3   –18,19,20<br><strong>beginIndex公式：(当前页数-1)*pageSize</strong><br><strong>聚集函数( 作用于一组数据，并对一组数据返回一个值 )</strong><br><strong>COUNT:统计结果记录数，若统计的是列，列中为Null，那么count将不会计算值</strong><br><strong>MAX: 统计计算最大值</strong><br><strong>MIN: 统计计算最小值</strong><br><strong>SUM: 统计计算求和</strong><br><strong>AVG: 统计计算平均值</strong><br><strong>分组函数( 注意：如果要对分组后的数据进行筛选，那么必须使用having关键字，条件写在having后 )</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select 聚集函数 from 表名 where [条件] group by 列 having 分组后的条件</span><br></pre></td></tr></table></figure>
+
+<p>语句的执行顺序：FROM—&gt; WHERE—&gt;group by—-&gt;Having—&gt;SELECT–&gt;ORDER BY</p>
+<p><strong>Where和having的区别：<br>Where: 先过滤已有的数据(数据是已经存在的),在进行分组,在聚集计算</strong><br><strong>Having:先分组,在对每组进行计算,根据得到结果在过滤(分组把数据算出之后，在过滤)</strong><br>注意：使用having的时候，它是可以使用别名的</p>
+
         </div>
 
         
@@ -167,6 +278,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/MySQL/"># MySQL</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -176,6 +291,8 @@
             </div>
         </section>
         <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/10/20/Hello-Word/">Hello Word</a>
             
             
         </section>
