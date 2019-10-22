@@ -12,7 +12,7 @@
 
 
 
-<title>Hello Word | 憨憨的博客</title>
+<title>GitHub个人技术博客搭建步骤 | 憨憨的博客</title>
 
 
 
@@ -108,73 +108,11 @@
             <div class="container">
     
     
-        <div class="post-toc">
-    <div class="tocbot-list">
-    </div>
-    <div class="tocbot-list-menu">
-        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
-        <a onclick="go_top()">Back to top</a>
-        <a onclick="go_bottom()">Go to bottom</a>
-    </div>
-</div>
-
-<script>
-    document.ready(
-        function () {
-            tocbot.init({
-                tocSelector: '.tocbot-list',
-                contentSelector: '.post-content',
-                headingSelector: 'h1, h2, h3, h4, h5',
-                collapseDepth: 1,
-                orderedList: false,
-                scrollSmooth: true,
-            })
-        }
-    )
-
-    function expand_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 6,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "collapse_toc()");
-        b.innerHTML = "Collapse all"
-    }
-
-    function collapse_toc() {
-        var b = document.querySelector(".tocbot-toc-expand");
-        tocbot.init({
-            tocSelector: '.tocbot-list',
-            contentSelector: '.post-content',
-            headingSelector: 'h1, h2, h3, h4, h5',
-            collapseDepth: 1,
-            orderedList: false,
-            scrollSmooth: true,
-        });
-        b.setAttribute("onclick", "expand_toc()");
-        b.innerHTML = "Expand all"
-    }
-
-    function go_top() {
-        window.scrollTo(0, 0);
-    }
-
-    function go_bottom() {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-
-</script>
-    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">Hello Word</h1>
+            <h1 class="post-title">GitHub个人技术博客搭建步骤</h1>
             
                 <div class="post-meta">
                     
@@ -183,23 +121,16 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">十月 20, 2019&nbsp;&nbsp;21:19:19</a>
+                        Date: <a href="#">十月 22, 2019&nbsp;&nbsp;10:52:38</a>
                         </span>
                     
-                    
-                        <span class="post-category">
-                    Category:
-                            
-                                <a href="/categories/%E8%BF%99%E4%B8%AA%E6%98%AF%E5%88%86%E7%B1%BB-%E8%A6%81%E5%8A%A0%E5%8F%8C%E5%BC%95%E5%8F%B7/">这个是分类(要加双引号)</a>
-                            
-                        </span>
                     
                 </div>
             
         </header>
 
         <div class="post-content">
-            <h1 id="Hello-Word"><a href="#Hello-Word" class="headerlink" title="Hello Word"></a>Hello Word</h1>
+            
         </div>
 
         
@@ -213,7 +144,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://yoursite.com/2019/10/20/Hello-Word/">http://yoursite.com/2019/10/20/Hello-Word/</a></span>
+                        <span><a href="http://yoursite.com/2019/10/22/GitHub%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4/">http://yoursite.com/2019/10/22/GitHub%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4/</a></span>
                     </p>
                 
                 
@@ -236,10 +167,6 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
-                    
-                        <a href="/tags/%E8%BF%99%E4%B8%AA%E6%98%AF%E6%A0%87%E7%AD%BE%EF%BC%8C%E4%B8%8D%E8%A6%81%E5%86%99%E9%94%99-%E8%A6%81%E5%8A%A0%E5%8F%8C%E5%BC%95%E5%8F%B7/"># 这个是标签，不要写错(要加双引号)</a>
-                    
-                        
                 </span>
             </div>
             <div>
@@ -250,10 +177,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2019/10/22/GitHub%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4/">GitHub个人技术博客搭建步骤</a>
             
-            
-            <a class="next" rel="next" href="/2019/10/20/MySQL%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"> MySQL知识点总结</a>
+            <a class="next" rel="next" href="/2019/10/20/Hello-Word/">Hello Word</a>
             
         </section>
 
