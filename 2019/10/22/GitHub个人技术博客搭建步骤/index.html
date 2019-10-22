@@ -125,12 +125,100 @@
                         </span>
                     
                     
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/github/">github</a>
+                            
+                        </span>
+                    
                 </div>
             
         </header>
 
         <div class="post-content">
-            
+            <p><strong>一、前期准备</strong><br>1、GitHub账号</p>
+<p>注册地址：<a href="https://github.com/" target="_blank" rel="noopener">https://github.com/</a></p>
+<p>2、Node.js环境</p>
+<p>下载地址：<a href="https://nodejs.org/download/" target="_blank" rel="noopener">https://nodejs.org/download/</a></p>
+<p>3、Git 软件</p>
+<p>下载地址<a href="http://git-scm.com/download/" target="_blank" rel="noopener">http://git-scm.com/download/</a></p>
+<p><strong>二、软件安装</strong><br> 1、注册GitHub账号</p>
+<p>1).Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io，此处账号名作为后期个人博客的地址使用2。并且需要勾选Initialize this repository with a README。（如果没有勾选，后期要创建README文件即可）</p>
+<p><img src="C:%5CUsers%5C86182%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571713057837.png" alt="1571713057837"></p>
+<p>2).创建一个新的repository(代码仓库), 注意，名称必须是xxx.github.io 格式，并且xxx必须是你在GitHub的用户名。</p>
+<p><img src="C:%5CUsers%5C86182%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571713114555.png" alt="1571713114555"></p>
+<p>3).在建好的项目右侧有个settings按钮，点击它，向下拉到GitHub Pages，你会看到那边有个网址，可以访问它。你将会惊奇的发现该项目已经被部署到网络上，能够通过外网来访问它。</p>
+<p><img src="C:%5CUsers%5C86182%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571713147779.png" alt="1571713147779"></p>
+<p>2.安装Node.js</p>
+<p>在node.js指定地址下载，采用最新的版本即可。</p>
+<p><img src="C:%5CUsers%5C86182%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571713203954.png" alt="1571713203954"></p>
+<p> 本文实例以v10.16.3 版本为例，其他版本类似   </p>
+<p> <strong>安装步骤：</strong>  </p>
+<p>步骤 1 : 双击下载后的安装包 v10.16.3 ，如下所示：    </p>
+<p><img src="C:%5CUsers%5C86182%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571713336888.png" alt="1571713336888"></p>
+<p>步骤 2 : 点击以上的Run(运行)，将出现如下界面：</p>
+<p><img src="C:%5CUsers%5C86182%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571713347684.png" alt="1571713347684"></p>
+<p>步骤 3 : 勾选接受协议选项，点击 next（下一步） 按钮 </p>
+<p>步骤 4 : Node.js默认安装目录为 “C:\Program Files\nodejs&quot; , 你可以修改目录，并点击 next（下一步）</p>
+<p>步骤 5 : 点击树形图标来选择你需要的安装模式 , 然后点击下一步 next（下一步）</p>
+<p>步骤 6 :点击 Install（安装） 开始安装Node.js。你也可以点击 Back（返回）来修改先前的配置。 然后并点击 next（下一步）， 点击 Finish（完成）按钮退出安装向导。 </p>
+<p>3.安装Git</p>
+<p>指定位置，进行下载并安装</p>
+<p>验证是否安装成功，在桌面上点击鼠标右键，点击Git Bash Here，弹出交互界面，表示正确安装成功！</p>
+<p><img src="C:%5CUsers%5C86182%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571713542040.png" alt="1571713542040"></p>
+<p><img src="C:%5CUsers%5C86182%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1571713556613.png" alt="1571713556613"></p>
+<p><strong>三、Hexo配置流程</strong></p>
+<p>1、<strong>安装Hexo</strong></p>
+<p>1）新建文件夹hexo，然后进入 hexo 文件夹，鼠标右键点击Git Bash Here。  </p>
+<p>2）安装hexo基础框架</p>
+<p> 第一步： <code>npm install hexo-cli -g</code>  </p>
+<p> 第二步：<code>hexo init blog</code>  </p>
+<p> 第三步：<code>cd blog</code>  </p>
+<p>第四步：<code>npm install</code></p>
+<p>第五步：<code>hexo g</code></p>
+<p>第六步：<code>hexo s</code></p>
+<p>2、 hexo主题设置，这里以主题yilia为例进行说明。</p>
+<p>1）安装主题（此处当前目录为blog）</p>
+<p>git clone <a href="https://github.com/litten/hexo-theme-yilia.git" target="_blank" rel="noopener">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia</p>
+<p>2）启用主题</p>
+<p>cd themes/yilia</p>
+<p>git pull  //获取远程内容</p>
+<p>3） 修改配置文件</p>
+<p>修改hexo目录下的_config.yml配置文件中的theme属性，将其设置为我们前面克隆下来的主体样式，此处theme: yilia</p>
+<p>4） 重启服务</p>
+<p>切换到blog目录</p>
+<p>hexo g # 重新生成静态文件</p>
+<p>hexo s # 启动本地web服务器</p>
+<p>现在打开<a href="http://localhost:4000，会看到我们已经应用了一个新的主题。" target="_blank" rel="noopener">http://localhost:4000，会看到我们已经应用了一个新的主题。</a></p>
+<p> <strong>四、 部署到GitHub服务器</strong>  </p>
+<p>1、使用git命令行部署（optional）</p>
+<p>  此处我们采用git命令来完成部署的工作。</p>
+<p>1)  cd d:/hexo/blog</p>
+<p>2)   git clone <a href="https://github.com/lyg-git123/lyg-git123.github.io" target="_blank" rel="noopener">https://github.com/lyg-git123/lyg-git123.github.io</a>  .deploy/lyg-git123.github.io</p>
+<p>将我们之前创建的repo克隆到本地，新建一个目录叫做.deploy用于存放克隆的代码。</p>
+<p>3)  hexo generate  //生成静态文件</p>
+<p>cp -R public/* .deploy/lyg-git123.github.io //复制文件</p>
+<p>cd .deploy/lyg-git123.github.io //切换目录</p>
+<p>git add . //将需要提交的代码添加到暂存区</p>
+<p>git commit -m “update” //将暂存区内容提交给本地版本库</p>
+<p>git push //推送给远程服务器</p>
+<p>简单解释一下，hexo generate生成public文件夹下的新内容，然后将其拷贝至lyg-git123.github.io的git目录下，然后使用git commit命令提交代码到lyg-git123.github.io这个repo的master branch上。</p>
+<p>需要部署的时候，执行第三个步骤。执行过程中可能需要让你输入Github账户的用户名及密码，按照提示操作即可。</p>
+<p>2、 验证</p>
+<p>打开浏览器，输入地址：<a href="https://lyg-git123.github.io/" target="_blank" rel="noopener">https://lyg-git123.github.io/</a> ，就可以看到我们的博客上线了哈哈哈！！！</p>
+<p><strong>五、发布博客内容</strong></p>
+<p>1、创建博客标题</p>
+<p>hexo new “ javaoop知识点总结”</p>
+<p>2、编写博客内容</p>
+<p>找到创建的md文件，使用编辑器打开，按照Markdown的格式，编写博客内容，编写完成之后，执行以下代码，将博客内容推送到远程服务器上。</p>
+<p>hexo generate  //生成静态文件</p>
+<p>cp -R public/* .deploy/lyg-git123.github.io //复制文件</p>
+<p>cd .deploy/lyg-git123.github.io //切换目录</p>
+<p>git add . //将需要提交的代码添加到暂存区</p>
+<p>git commit -m “update” //将暂存区内容提交给本地版本库</p>
+<p>git push //推送给远程服务器</p>
+
         </div>
 
         
@@ -167,6 +255,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/github/"># github</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -178,7 +270,7 @@
         <section class="post-nav">
             
             
-            <a class="next" rel="next" href="/2019/10/20/MySQL%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"> MySQL知识点总结</a>
+            <a class="next" rel="next" href="/2019/10/21/javaoop%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">javaoop知识点总结</a>
             
         </section>
 

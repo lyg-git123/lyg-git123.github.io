@@ -12,7 +12,7 @@
 
 
 
-<title> javaoop知识点总结 | 憨憨的博客</title>
+<title>javaoop知识点总结 | 憨憨的博客</title>
 
 
 
@@ -112,7 +112,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title"> javaoop知识点总结</h1>
+            <h1 class="post-title">javaoop知识点总结</h1>
             
                 <div class="post-meta">
                     
@@ -125,12 +125,180 @@
                         </span>
                     
                     
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/javaoop/">javaoop</a>
+                            
+                        </span>
+                    
                 </div>
             
         </header>
 
         <div class="post-content">
-            
+            <p><strong>第二章：类和对象</strong></p>
+<p>1.什么是类?什么是对象?</p>
+<p>简单来说,类是抽象出某一类事物的行为和特征,并进行的封装,特征称之为属性,行为称之为方法;</p>
+<p>对象就是这一类的具体实例,对象拥有这个类的所有属性和方法</p>
+<p>举个例子:</p>
+<p>所有的人是一个类,人所具有的属性:身高和体重…,人具有的方法:吃饭,睡觉..</p>
+<p>具体到某一个人是一个对象,比如小明就是一个对象,小明有身高,体重,可以吃饭,可以睡觉..</p>
+<p>java编程思想中是这么描述对象的:</p>
+<p>对象具有状态,行为,和标识.这意味着每一个对象都可以拥有内部数据(它们给出了该对象的状态)和方法(它们产生行为),并且每一个对象都可以与其他对象区分开来,具体来说,就是每一个对象在内存中都有一个唯一的地址.</p>
+<p>2．什么是面向对象?为什么要面向对象?</p>
+<p>官方话:</p>
+<p>面向对象（Object Oriented）是一种新兴的程序设计方法，或者是一种新的程序设计规范(paradigm)，其基本思想是使用对象、类、继承、封装、多态等基本概念来进行程序设计。从现实世界中客观存在的事物（即对象）出发来构造软件系统，并且在系统构造中尽可能运用人类的自然思维方式。面向对象是为了解决系统的可维护性，可扩展性，可重用性….</p>
+<p>我的理解:</p>
+<p>首先,面向对象是一种设计程序的方式,是一种设计思想.</p>
+<p>其次,面向对象节省代码,思路清晰,便于扩展.你所创建出的对象就是给你提供服务的.</p>
+<p>3．类的语法 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.创建类的步骤</p>
+<p> File—new—class—类名</p>
+<p>5.什么是类?什么是对象?</p>
+<p>简单来说,类是抽象出某一类事物的行为和特征,并进行的封装,特征称之为属性,行为称之为方法;</p>
+<p>对象就是这一类的具体实例,对象拥有这个类的所有属性和方法</p>
+<p>6．如何创建对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类名 对象名= <span class="keyword">new</span> 类名（）；</span><br></pre></td></tr></table></figure>
+
+<p>7.对象名.属性名（public）</p>
+<p>对象名.方法名（public）</p>
+<p>8.构造方法：方法名和类名一致，没有返回值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> 类名（）&#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>7.什么时候执行构造方法</p>
+<p>New 类名（）；—执行了构造方法</p>
+<p>在继承中super（）；—执行了构造方法</p>
+<p>9.构造方法重载：在同一个类中，有两个构造方法，他们方法名相同，参数类型，个数，顺序不同。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> 类名（）&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> 类名（String name）&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> 类名（String name，<span class="keyword">int</span> age）&#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：一般构造方法是为了做初始化操作</p>
+<p>10.static：静态变量。可以修饰属性，方法，代码块。</p>
+<p>类名.属性 类名.方法</p>
+<p><strong>第三章：面向对象三大特征（封装）</strong></p>
+<p>1.封装概念</p>
+<p>封装是实现面向对象程序设计的第一步，封装就是将属性和方法放在一个类中。对外提供服务时尽可能的隐藏对象内部细节，只保留有限的接口和方法;</p>
+<p>2.封装的步骤</p>
+<p> 1.把变量设置为私有化（private 变量）</p>
+<p> 2.将对应的get和set方法设置为共有的public</p>
+<p> 3.通过set和get方法进行相应的操作</p>
+<p>3.修饰符</p>
+<p>Public 共有的（整个项目中都可以获取到）</p>
+<p>Private 私有的（只有在本类中可以获取）</p>
+<p>Protected 安全的（同一个包中或同一个类中可以使用）</p>
+<p>Default 默认的 </p>
+<p>4.this</p>
+<p>This指当前的对象</p>
+<p><strong>第四章：面向对象三大特征（继承）</strong></p>
+<p>\1. 继承以后子类可以得到什么：</p>
+<p>  子类直接拥有父类非private的属性和方法</p>
+<p>  子类可以添加自己的属性和方法，即对父类进行扩展</p>
+<p>  子类可以重写父类的方法</p>
+<p>2.关键字extends</p>
+<p>3.语法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名 <span class="keyword">extends</span> 父类名</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.super关键字</p>
+<p>   1.super指父类对象 super.变量 super.方法</p>
+<p>   2.super（）指父类构造方法</p>
+<p>要求：1.调用父类的构造方法必须是在子类的构造方法中</p>
+<p>​       2.必须是在第一行</p>
+<p>5.重写</p>
+<p>1.必须是在继承关系中</p>
+<p>2.方法名一致，参数类型 个数 顺序完全相同</p>
+<p>3.只能子类重写父类方法</p>
+<p><strong>第五章：多态</strong></p>
+<p>1．多态的概念</p>
+<p>同一操作作用于不同的对象，可以产生不同的执行结果，这就是多态性。</p>
+<p>Java的多态性体现在两个方面：由方法重载实现的静态多态性（编译时多态）和方法重写实现的动态多态性（运行时多态）。</p>
+<p>2．多态的必要条件：继承，重写，父类引用指向子类对象</p>
+<p>3．多态的使用：</p>
+<p>   向上转型：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Father  son=<span class="keyword">new</span> Son();</span><br></pre></td></tr></table></figure>
+
+<p>   向下转型：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Son son=(Son)father;</span><br></pre></td></tr></table></figure>
+
+<p><strong>第六章：抽象</strong></p>
+<p>1．抽象的概念</p>
+<p>抽象就是用程序的逻辑方法和数据结构来模拟现实的世界。</p>
+<p>2．抽象的关键字</p>
+<p>​       abstract  可以修饰类，可以修饰方法</p>
+<p>3．抽象的用法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//抽象类</span></span><br><span class="line"></span><br><span class="line">​       <span class="keyword">public</span> <span class="keyword">abstract</span>  <span class="class"><span class="keyword">class</span>类名</span>&#123;</span><br><span class="line"></span><br><span class="line">​       <span class="comment">//抽象方法没有方法体</span></span><br><span class="line"></span><br><span class="line">​            Public <span class="keyword">abstract</span> <span class="keyword">void</span> 方法名();</span><br><span class="line"></span><br><span class="line">​       &#125;</span><br><span class="line"></span><br><span class="line">​       <span class="comment">//当父类是抽象类的时候，子类必须重写父类里面的抽象方法</span></span><br></pre></td></tr></table></figure>
+
+<p>4．final修饰符：最终的</p>
+<p>​       修饰变量，修饰方法，修饰类</p>
+<p>​       1，当修饰变量时，变量转换成常量，常量的值不能改变</p>
+<p>​       final int a=18;//不能被改变，必须给一个初始值</p>
+<p>​       2，当修饰方法时，该方法不能被重写</p>
+<p>​       3，当修饰类时，该类不能被继。</p>
+<p>因为不能被继承，所以此类方法中所有方法默认都是final修饰。</p>
+<p>该类如果不需要子类，不需要扩展，类中的方法不能被重写，就用final修饰该类</p>
+<p><strong>第七章：接口</strong></p>
+<p>1．接口的概念</p>
+<p>接口是一种规范和标准，它们可以约束类的行为是一些方法特征的集合，但是没有方法的实现。</p>
+<p>（1）接口声明：interface 接口名；   接口体:包括常量定义和方法定义，方法只允许声明不允许实现。</p>
+<p>（2）接口使用：class A implements print,add    或者  class A extends A1 implements print,add</p>
+<p>（3）当某个类使用接口的时候，必须给出所有方法的实现，方法的类型、参数一定要和接口的一致；接口的方法默认为public abstract，故类在实现时一定不能漏写public关键字；接口常量默认关键字为public static。</p>
+<p>（4）因为接口中只含有public static final 常量和public abstract方法，故在写接口的时候可以省略这些关键字。</p>
+<p>（5）如果接口的返回类型不是void，那么实现方法体的时候，至少要有一个return语句；如果接口的返回类型是void，可以除了大括号之外可以没有任何语句。</p>
+<p>（6）Java提供的接口都在相应的包中，可以通过引入包使用相应的接口；也可以自定义接口，一个源文件就是由类和接口来组成的。</p>
+<p>（7）类实现的接口的方法以及接口中的常量可以通过类的对象进行调用，常量也可以通过类名和接口名进行调用。</p>
+<p>（8）接口声明的时候，如果加上关键字public，那么接口可以被任一个类进行调用，如果没有public则为友好型接口，只能被同一个包内的类进行调用。</p>
+<p>（9）如果父类使用某个接口，那么子类也就使用了接口，不用再使用implements。</p>
+<p>（10）接口可以通过extends继承接口。</p>
+<p>（11）如果一个类声明实现一个接口但没有实现接口的所有方法，那么这个类一定得是abstract类。</p>
+<p>2．接口的关键字：Interface</p>
+<p>3．接口的语法：</p>
+<p>​       public Intertface 接口名()</p>
+<p>​       File-ànew-àInterface//创建接口</p>
+<p>4．接口的用法：</p>
+<p>​       实现接口的关键字 implements</p>
+<p>​       Public interface 类名（）{}</p>
+<p> 注意：接口可以进行多继承</p>
+<p><strong>第八章：集合框架</strong></p>
+<p>1．ArrayList</p>
+<p>​     1．用法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">  ArrayList list=<span class="keyword">new</span> ArrayList();</span><br><span class="line"></span><br><span class="line">​     list.add();<span class="comment">//添加数据</span></span><br><span class="line"></span><br><span class="line">​     list.get();<span class="comment">//获取数据</span></span><br></pre></td></tr></table></figure>
+
+<p>2．Map</p>
+<p>​     用法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> Map map=<span class="keyword">new</span> HasMap();</span><br><span class="line"></span><br><span class="line">​     map.put(key,value);<span class="comment">//key不能重复</span></span><br><span class="line"></span><br><span class="line">​     map.get(key);<span class="comment">//获取key对象的value</span></span><br></pre></td></tr></table></figure>
+
+<p>​     Map中的key不要求有序，不允许重复。Value同样不要求有序，但允许重复。</p>
+<p>3．泛型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; list=<span class="keyword">new</span> ArayList&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">Map&lt;String,String&gt;</span><br></pre></td></tr></table></figure>
+
+<p>\4.   List和set集合的区别</p>
+<p>List继承collection接口，存储一组不唯一（允许重复）、有序（以元素插入的次序来放置元素，不会重新排列）的对象。</p>
+<p>Set继承collection接口，存储一组不唯一（不允许重复）、无序的对象。</p>
+<p>\5.   List和map集合的区别</p>
+<p>List继承collection接口，存储一组不唯一（允许重复）、有序（以元素插入的次序来放置元素，不会重新排列）的对象。</p>
+<p>Map接口存储一组成对的键值对象，提供key到value的映射。Map中的key不要求有序，不允许重复。Value同样不要求有序，但允许重复。</p>
+<p><strong>第九章 高级功能-文件操作</strong></p>
+<p>1.输入流对象类型</p>
+<p>BufferedReader</p>
+<p>2.输出流对象类型</p>
+<p>OutputStream（字节输出流）</p>
+<p>Writer（字符输出流）</p>
+<p>3.字节输出流步骤</p>
+<p>（1）.引入相关的类</p>
+<p>（2）.构造一个文件输出流对象</p>
+<p>（3）.利用文件输出流的方法把数据写入文本文件中</p>
+<p>（4）.关闭文件输出流</p>
+<p>4.读文件</p>
+<p>InputStream（字节输入流）</p>
+<p>Reader（字符输入流）</p>
+<p><strong>第十章 高级功能-多线程</strong></p>
+<p>1.创建多线程的方式有哪些</p>
+<p>实现Runnable接口</p>
+<p>继承Thread类</p>
+<p>2.同步的关键字是什么</p>
+<p>synchronized</p>
+
         </div>
 
         
@@ -167,6 +335,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/javaoop/"># javaoop</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -177,8 +349,10 @@
         </section>
         <section class="post-nav">
             
+                <a class="prev" rel="prev" href="/2019/10/22/GitHub%E4%B8%AA%E4%BA%BA%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4/">GitHub个人技术博客搭建步骤</a>
             
-            <a class="next" rel="next" href="/2019/10/20/Hello-Word/">Hello Word</a>
+            
+            <a class="next" rel="next" href="/2019/10/20/MySQL%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/"> MySQL知识点总结</a>
             
         </section>
 
