@@ -125,12 +125,41 @@
                         </span>
                     
                     
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/css/">css</a>
+                            
+                        </span>
+                    
                 </div>
             
         </header>
 
         <div class="post-content">
-            
+            <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="selector-tag">doctype</span> <span class="selector-tag">html</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">html</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">head</span>&gt;</span><br><span class="line">&lt;meta charset="utf-8"&gt;</span><br><span class="line">&lt;title&gt;无标题文档&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;<span class="selector-tag">body</span>&gt;</span><br><span class="line">	&lt;<span class="selector-tag">div</span>&gt;</span><br><span class="line">		&lt;img src="#"/&gt;</span><br><span class="line">		&lt;img src="#"/&gt;</span><br><span class="line">		&lt;img src="#"/&gt;</span><br><span class="line">		&lt;img src="#"/&gt;</span><br><span class="line">		&lt;img src="#"/&gt;</span><br><span class="line">		&lt;img src="#"/&gt;</span><br><span class="line">		&lt;img src="#"/&gt;</span><br><span class="line">		&lt;img src="#"/&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p> 以上代码是准备工作，在html代码的body主体中放了一个div，里面包着你想要显示在照片墙上的照片，数量可以任意。接着开始着手写样式。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;<span class="attribute">perspective</span>: <span class="number">5800px</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 以上代码是为照片墙设置一个足够大的3D视距，至少能容下所有图片的运动轨迹。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span>&#123;<span class="attribute">position</span>:absolute;<span class="attribute">height</span>:<span class="number">480px</span>;<span class="attribute">width</span>:<span class="number">320px</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 以上代码是给每个图片设置样式，给图片一个绝对定位，使其可以被任意地控制位置，此时图片会重叠在一起，宽高取决于照片墙中的的图片的具体尺寸，当然你也可以设置大小，320*480是我举的一个例子。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:nth-child(1)</span></span><br><span class="line">&#123;<span class="attribute">transform</span>: <span class="built_in">translateZ</span>(500px);&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:nth-child(2)</span></span><br><span class="line">&#123;<span class="attribute">transform</span>: <span class="built_in">translateZ</span>(-500px);&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:nth-child(3)</span></span><br><span class="line">&#123;<span class="attribute">transform</span>:<span class="built_in">rotateY</span>(45deg)<span class="built_in">translateZ</span>(-500px);&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:nth-child(4)</span></span><br><span class="line">&#123;<span class="attribute">transform</span>:<span class="built_in">rotateY</span>(45deg)<span class="built_in">translateZ</span>(500px);&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:nth-child(5)</span>&#123;<span class="attribute">transform</span>:<span class="built_in">rotateY</span>(-45deg)<span class="built_in">translateZ</span>(500px);&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:nth-child(6)</span></span><br><span class="line">&#123;<span class="attribute">transform</span>:<span class="built_in">rotateY</span>(-45deg)<span class="built_in">translateZ</span>(-500px);&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:nth-child(7)</span></span><br><span class="line">&#123;<span class="attribute">transform</span>:<span class="built_in">rotateY</span>(90deg) <span class="built_in">translateZ</span>(500px);&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:nth-child(8)</span></span><br><span class="line">&#123;<span class="attribute">transform</span>:<span class="built_in">rotateY</span>(90deg) <span class="built_in">translateZ</span>(-500px);&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码是给每个图片单独设置样式，使每张图片绕自身Y轴旋转一定角度，角度取决于你放了多少张图片，有n张图，则每张图片依次旋转360/n度，比如这里我放了8张图，那么每张图应依次比上一张图片多旋转360/8=45度，层层递进，如0度、45度、90度、135度、180度、225度、270度、315度，再使每张图片向自身的Z轴（此时每张图片的Z轴方向都已改变）都设置一个正向(全为负值也可)的等距离的位移，使其扩散开，我这里的写法效果也一样，旋转45度位移 - 500px其实和旋转225度位移500px效果是一样的。</p>
+<p> <img src="https://img-blog.csdnimg.cn/20191027104337592.jpg" alt="img"> </p>
+<p> 俯视图：先自身旋转，再向各个方向扩散。<br>一定要先旋转，使自身Z轴方向改变再位移，否则会发生如下情况： </p>
+<p> <img src="https://img-blog.csdnimg.cn/20191027104914254.jpg" alt="img"> </p>
+<p> 先位移后再旋转，由于先位移时所有图片的z轴都为初始方向，会使得所有图片同向位移一段距离，仍然叠在一起，再旋转时也会挤在一起。 </p>
+<p> 接着 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;<span class="attribute">margin</span>:<span class="number">0</span> auto;<span class="attribute">margin-top</span>:<span class="number">600px</span>;</span><br><span class="line"><span class="attribute">transform-style</span>: preserve-<span class="number">3</span>d;</span><br><span class="line"><span class="attribute">animation</span>:zhuan <span class="number">6s</span> linear  infinite;<span class="attribute">height</span>:<span class="number">480px</span>;<span class="attribute">width</span>:<span class="number">320px</span>;&#125;</span><br><span class="line">@<span class="keyword">keyframes</span> zhuan&#123;</span><br><span class="line">			0%&#123;<span class="attribute">transform</span>:<span class="built_in">rotateX</span>(-15deg) <span class="built_in">rotateY</span>(0);&#125;</span><br><span class="line">			100%&#123;<span class="attribute">transform</span>: <span class="built_in">rotateX</span>(-15deg) <span class="built_in">rotateY</span>(360deg);&#125;</span><br><span class="line">		&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后一步：给包着所有图片的div设置绕着初始位置旋转的动画效果即rotateY（360deg），这里要注意是给div设置动画，而不是给图片，否则会变成“自转”，我们需要的效果是“公转”，设置margin使其在浏览器中间显示，方便观察，设置3d视角，接着给动画设置过渡时间6s（旋转快慢，可更改），再设置infinite使其无限循环，为了方便观察我使整个div绕其x轴旋转-15度。</p>
+<p>效果图</p>
+<p> <img src="https://img-blog.csdnimg.cn/20191027112221569.gif" alt="img"> </p>
+
         </div>
 
         
@@ -167,6 +196,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/css/"># css</a>
+                    
+                        
                 </span>
             </div>
             <div>
