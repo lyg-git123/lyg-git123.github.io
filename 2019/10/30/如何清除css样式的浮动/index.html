@@ -108,6 +108,68 @@
             <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
@@ -125,12 +187,41 @@
                         </span>
                     
                     
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/css/">css</a>
+                            
+                        </span>
+                    
                 </div>
             
         </header>
 
         <div class="post-content">
-            
+            <h2 id="清除css样式的浮动"><a href="#清除css样式的浮动" class="headerlink" title="清除css样式的浮动"></a>清除css样式的浮动</h2><p> 1）如何清除同级之间的浮动 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">Clear</span><span class="selector-pseudo">:both</span></span><br><span class="line">Float:left/right</span><br></pre></td></tr></table></figure>
+
+<p> 2）如何清除子级和父级之间的浮动 </p>
+<p> <strong>1.给父级添加高度</strong> </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#ul1</span>&#123;</span><br><span class="line">            <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line">            height:calc(100px * 4); 计算属性的</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="selector-id">#ul1</span> <span class="selector-tag">li</span>&#123;</span><br><span class="line">            <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">            <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">            <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#999999</span>;</span><br><span class="line">            <span class="attribute">float</span>:left;</span><br><span class="line">&#125;</span><br><span class="line">&lt;ul id="ul1"&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>2.给父级加浮动</strong> </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#ul1</span>&#123;</span><br><span class="line">            <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line">            <span class="attribute">float</span>:left;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="selector-id">#ul1</span> <span class="selector-tag">li</span>&#123;</span><br><span class="line">         <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">         <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">         <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#999999</span>;</span><br><span class="line">         <span class="attribute">float</span>:left;</span><br><span class="line">&#125;</span><br><span class="line">&lt;ul id="ul1"&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>3.给父级添加 overflow:hideen</strong> </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#ul1</span>&#123;</span><br><span class="line">      <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line">      <span class="attribute">overflow</span>:hidden;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="selector-id">#ul1</span> <span class="selector-tag">li</span>&#123;</span><br><span class="line">       <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">       <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">       <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#999999</span>;</span><br><span class="line">       <span class="attribute">float</span>:left;</span><br><span class="line">&#125;</span><br><span class="line">&lt;ul id="ul1"&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>4.子级后加&lt; br clear=“both”/&gt;</strong> </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#ul1</span>&#123;</span><br><span class="line">            <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="selector-id">#ul1</span> <span class="selector-tag">li</span>&#123;</span><br><span class="line">            <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">            <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">            <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#999999</span>;</span><br><span class="line">            <span class="attribute">float</span>:left;</span><br><span class="line">&#125;</span><br><span class="line"> &lt;ul id="ul1"&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;br clear="both"&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>5.在子级后添加一个div</strong> </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#ul1</span>&#123;</span><br><span class="line">            <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="selector-id">#ul1</span> <span class="selector-tag">li</span>&#123;</span><br><span class="line">            <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">            <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">            <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#999999</span>;</span><br><span class="line">            <span class="attribute">float</span>:left;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="selector-class">.clear</span>&#123;</span><br><span class="line">            <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">            <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br><span class="line">&lt;ul id="ul1"&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;div class='clear'&gt;&lt;/div&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>6.加伪类</strong> </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#ul1</span>&#123;</span><br><span class="line">            <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#000</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#ul1</span> <span class="selector-tag">li</span>&#123;</span><br><span class="line">            <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">            <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">            <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#999999</span>;</span><br><span class="line">            <span class="attribute">float</span>:left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.clearfix</span><span class="selector-pseudo">:after</span>&#123;</span><br><span class="line">            <span class="attribute">content</span>:<span class="string">''</span>;</span><br><span class="line">            <span class="attribute">display</span>:block;</span><br><span class="line">            <span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.clearfix</span>&#123;</span><br><span class="line">            <span class="attribute">zoom</span>:<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;ul id="ul1" class='clearfix'&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;li&gt;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="到这里就没有啦！"><a href="#到这里就没有啦！" class="headerlink" title="到这里就没有啦！"></a>到这里就没有啦！</h2>
         </div>
 
         
@@ -167,6 +258,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/css/"># css</a>
+                    
+                        
                 </span>
             </div>
             <div>
