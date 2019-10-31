@@ -125,12 +125,31 @@
                         </span>
                     
                     
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/css/">css</a>
+                            
+                        </span>
+                    
                 </div>
             
         </header>
 
         <div class="post-content">
-            
+            <p> <strong>1.</strong>局部冒泡排序，该改进方式的思想是，在一次遍历中，一旦发现两个 相邻元素需要交换位置，那么在交换之后需要继续比较冒泡上来的元素 与前一个元素，使已经遍历过的元素有序。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">public</span> <span class="selector-tag">static</span> <span class="selector-tag">void</span> <span class="selector-tag">bubbleSort3</span>(<span class="selector-tag">int</span><span class="selector-attr">[]</span> <span class="selector-tag">d</span>, <span class="selector-tag">int</span> <span class="selector-tag">n</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int k = 1; k &lt; n; k++) &#123;</span><br><span class="line">            boolean flag = false;</span><br><span class="line">            for (int i = 1; i &lt; n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                if (d[i] &lt; d[i - 1])</span><br><span class="line">                &#123;</span><br><span class="line">                    int j = i;</span><br><span class="line">                    while (j &gt;= 0 &amp;&amp; d[j] &lt; d[j - 1]) &#123;</span><br><span class="line">                        int temp = d[j];</span><br><span class="line">                        d[j] = d[j - 1];</span><br><span class="line">                        d[j - 1] = temp;</span><br><span class="line">                        <span class="selector-tag">j</span> <span class="selector-tag">--</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                    for (int m = 0; m &lt; n; m ++) &#123;</span><br><span class="line">                        <span class="selector-tag">System</span><span class="selector-class">.out</span><span class="selector-class">.print</span>(<span class="selector-tag">d</span><span class="selector-attr">[m]</span> + "\<span class="selector-tag">t</span>");</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="selector-tag">System</span><span class="selector-class">.out</span><span class="selector-class">.println</span>("###");</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="selector-tag">if</span>(!<span class="selector-tag">flag</span>) <span class="selector-tag">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p> 效果如图 </p>
+<p> <img src="https://img-blog.csdnimg.cn/20191030142424302.png" alt="img"> </p>
+<p> 2.设置标志位，通过标志位判断所有元素是否已经有序，如果有序立即跳出循环。 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">public</span> <span class="selector-tag">static</span> <span class="selector-tag">void</span> <span class="selector-tag">bubbleSort2</span>(<span class="selector-tag">int</span><span class="selector-attr">[]</span> <span class="selector-tag">d</span>, <span class="selector-tag">int</span> <span class="selector-tag">n</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        for (int k = 1; k &lt; n; k++) &#123;</span><br><span class="line">            boolean flag = false;</span><br><span class="line">            for (int i = 1; i &lt; n; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                if (d[i] &gt; d[i - 1])</span><br><span class="line">                &#123;</span><br><span class="line">                    int temp = d[i];</span><br><span class="line">                    d[i] = d[i - 1];</span><br><span class="line">                    d[i - 1] = temp;</span><br><span class="line">                    flag = true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            for (int m = 0; m &lt; n -1; m ++) &#123;</span><br><span class="line">                <span class="selector-tag">System</span><span class="selector-class">.out</span><span class="selector-class">.print</span>(<span class="selector-tag">d</span><span class="selector-attr">[m]</span> + "\<span class="selector-tag">t</span>");</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="selector-tag">System</span><span class="selector-class">.out</span><span class="selector-class">.println</span>("###");</span><br><span class="line">            <span class="selector-tag">if</span>(!<span class="selector-tag">flag</span>) <span class="selector-tag">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p> 效果如图</p>
+<p><img src="https://img-blog.csdnimg.cn/20191030142316592.png" alt="img"> </p>
+<p> 而不经过优化的冒泡排序，尽管所有的元素都有序了，接下来的遍历还是会执行，会耗费时间。 </p>
+<p> <img src="https://img-blog.csdnimg.cn/20191030142611755.png" alt="img"> </p>
+
         </div>
 
         
@@ -167,6 +186,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/css/"># css</a>
+                    
+                        
                 </span>
             </div>
             <div>
