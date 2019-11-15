@@ -125,12 +125,52 @@
                         </span>
                     
                     
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/JSP/">JSP</a>
+                            
+                        </span>
+                    
                 </div>
             
         </header>
 
         <div class="post-content">
-            
+            <p><strong>一、什么是 cookie？</strong></p>
+<p>cookie 就是页面用来保存信息，比如自动登录、记住用户名等等。</p>
+<p><strong>二、cookie 的特点</strong></p>
+<p>同个网站中所有的页面共享一套 cookie</p>
+<p>cookie 有数量、大小限制</p>
+<p>cookie 有过期时间</p>
+<p><strong>三、如何使用 cookie？</strong></p>
+<p>通过 document.cookie 来写入 cookie</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE HTML&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en-US"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line"> &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line"> &lt;title&gt;cookie基础&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;<span class="regexp">/body&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>html&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line"><span class="built_in">document</span>.cookie = <span class="string">'username=abc'</span>;</span><br><span class="line"><span class="built_in">document</span>.cookie = <span class="string">'password=123'</span>;</span><br><span class="line"><span class="built_in">document</span>.cookie = <span class="string">'email=abcdef@123.com'</span>;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器查看 cookie，可以发现新定义的 cookie 并不会将原来的覆盖。</p>
+<p>如果没有设置过期时间，那么关闭浏览器就会清空 cookie。如何设置过期时间呢？答案是：expires。一般我们会结合 Date 对象来使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">d.setTime(d.getTime() + <span class="number">1</span> * <span class="number">3600</span> * <span class="number">1000</span>);</span><br><span class="line"><span class="built_in">document</span>.cookie = <span class="string">'username=abc; expires='</span> +d.toGMTString();</span><br></pre></td></tr></table></figure>
+
+<p>我们可以通过火狐浏览器看到，username 的过期时间是当前时间的 1 小时后。</p>
+<p>最后对获取 cookie 的方法进行封装：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">name,value,hours</span>)</span>&#123; </span><br><span class="line"> <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"> d.setTime(d.getTime() + hours * <span class="number">3600</span> * <span class="number">1000</span>);</span><br><span class="line"> <span class="built_in">document</span>.cookie = name + <span class="string">'='</span> + value + <span class="string">'; expires='</span> + d.toGMTString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>学会了如何设置 cookie，那么该如何读取 cookie 呢？</p>
+<p>首先我们看下 cookie 里的内容是什么类型？</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.cookie = <span class="string">'username=abc'</span>;</span><br><span class="line"><span class="built_in">document</span>.cookie = <span class="string">'password=123'</span>;</span><br><span class="line"><span class="built_in">document</span>.cookie = <span class="string">'email=abcdef@123.com'</span>;</span><br><span class="line"><span class="keyword">typeof</span> <span class="built_in">document</span>.cookie; <span class="comment">//string</span></span><br><span class="line">alert(<span class="built_in">document</span>.cookie); <span class="comment">//'username=abc; password=123; email=abcdef@123.com'</span></span><br></pre></td></tr></table></figure>
+
+<p>得到的是一串字符串，需要注意的是，每个 ; 后面都有个空格。</p>
+<p>那么我们如何取到具体的数值呢？附上代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">name</span>)</span>&#123; </span><br><span class="line"> <span class="keyword">var</span> arr = <span class="built_in">document</span>.cookie.split(<span class="string">'; '</span>);</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line"> <span class="keyword">var</span> temp = arr[i].split(<span class="string">'='</span>);</span><br><span class="line"> <span class="keyword">if</span>(temp[<span class="number">0</span>] == name)&#123;</span><br><span class="line">  <span class="keyword">return</span> temp[<span class="number">1</span>];</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>除了设置、获取 cookie，我们还可以删除 cookie。我们在网上经常看到有清除用户名这样的功能，其实就是用到了清除 cookie。</p>
+<p>清除 cookie 其实很简单，只要使过期时间为过去时间就可以了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeCookie</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line"> <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"> d.setTime(d.getTime() - <span class="number">10000</span>);</span><br><span class="line"> <span class="built_in">document</span>.cookie = name + <span class="string">'=1; expires='</span> + d.toGMTString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后我们将设置、获取、清除 cookie 封装成一个 cookie.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setCookie</span>(<span class="params">name,value,hours</span>)</span>&#123; </span><br><span class="line"> <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"> d.setTime(d.getTime() + hours * <span class="number">3600</span> * <span class="number">1000</span>);</span><br><span class="line"> <span class="built_in">document</span>.cookie = name + <span class="string">'='</span> + value + <span class="string">'; expires='</span> + d.toGMTString();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getCookie</span>(<span class="params">name</span>)</span>&#123; </span><br><span class="line"> <span class="keyword">var</span> arr = <span class="built_in">document</span>.cookie.split(<span class="string">'; '</span>);</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line"> <span class="keyword">var</span> temp = arr[i].split(<span class="string">'='</span>);</span><br><span class="line"> <span class="keyword">if</span>(temp[<span class="number">0</span>] == name)&#123;</span><br><span class="line">  <span class="keyword">return</span> temp[<span class="number">1</span>];</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeCookie</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line"> <span class="keyword">var</span> d = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"> d.setTime(d.getTime() - <span class="number">10000</span>);</span><br><span class="line"> <span class="built_in">document</span>.cookie = name + <span class="string">'=1; expires='</span> + d.toGMTString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
         </div>
 
         
@@ -167,6 +207,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/JSP/"># JSP</a>
+                    
+                        
                 </span>
             </div>
             <div>
